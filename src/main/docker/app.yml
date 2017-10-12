@@ -1,0 +1,14 @@
+version: '2'
+services:
+    payserviceapplication-app:
+        image: payserviceapplication
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://payserviceapplication-mysql:3306/payserviceapplication?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 10001:10001
+    payserviceapplication-mysql:
+        extends:
+            file: mysql.yml
+            service: payserviceapplication-mysql
